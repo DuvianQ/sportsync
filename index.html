@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportSync - Prototipo</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="login-screen" class="screen active">
+
+    <div class="login-box">
+        <img src="assets/logo.png" class="logo-login" alt="SportSync">
+
+        <h2>Bienvenido a SportSync</h2>
+
+        <input type="text" id="login-user" placeholder="Usuario" />
+        <input type="password" id="login-pass" placeholder="Contraseña" />
+
+        <button id="btn-login">Ingresar</button>
+
+        <p class="muted">Usuario demo: <strong>admin</strong> — Contraseña: <strong>demo</strong></p>
+    </div>
+
+</div>
+
+
+<!-- ================= APP ================= -->
+<div id="app" class="hidden">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+            <img src="assets/logo.png" class="logo-small" alt="logo">
+
+            <h2>SportSync</h2>
+        </div>
+
+        <nav>
+            <button data-view="dashboard" class="navbtn active">Dashboard</button>
+            <button data-view="inventory" class="navbtn">Inventario</button>
+            <button data-view="sales" class="navbtn">Ventas</button>
+            <button data-view="returns" class="navbtn">Devoluciones</button>
+            <button data-view="providers" class="navbtn">Proveedores</button>
+            <button data-view="reports" class="navbtn">Reportes</button>
+        </nav>
+
+        <div class="sidebar-foot">
+            <button id="logout">Cerrar sesión</button>
+        </div>
+
+    </aside>
+
+
+    <!-- ============ CONTENT (RIGHT SIDE) ============ -->
+    <main class="content">
+
+        <!-- ========== DASHBOARD ========== -->
+        <section id="dashboard" class="view active">
+            <h1>Dashboard</h1>
+
+            <canvas id="salesChart" height="120"></canvas>
+        </section>
+
+
+        <!-- ========== INVENTARIO ========== -->
+        <section id="inventory" class="view">
+            <h1>Inventario</h1>
+
+            <div class="flex-row gap">
+                <input type="text" id="search" placeholder="Buscar producto..." />
+                <button id="btn-new-product">+ Nuevo producto</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ref</th>
+                            <th>Nombre</th>
+                            <th>Talla</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-table"></tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- ========== VENTAS ========== -->
+        <section id="sales" class="view">
+            <h1>Registro de venta</h1>
+
+            <div class="card">
+                <select id="sale-product"></select>
+                <input type="number" id="sale-qty" min="1" placeholder="Cantidad" />
+                <button id="btn-sale">Registrar venta</button>
+            </div>
+        </section>
+
+
+        <!-- ========== DEVOLUCIONES ========== -->
+        <section id="returns" class="view">
+            <h1>Registro de devolución</h1>
+
+            <div class="card">
+                <select id="return-product"></select>
+                <input type="number" id="return-qty" min="1" placeholder="Cantidad" />
+                <button id="btn-return">Registrar devolución</button>
+            </div>
+        </section>
+
+
+        <!-- ========== PROVEEDORES ========== -->
+        <section id="providers" class="view">
+            <h1>Proveedores</h1>
+
+            <div class="flex-row gap">
+                <input id="provider-name" placeholder="Nombre proveedor">
+                <input id="provider-phone" placeholder="Teléfono">
+                <button id="btn-provider">Agregar proveedor</button>
+            </div>
+
+            <ul id="provider-list"></ul>
+        </section>
+
+
+        <!-- ========== REPORTES ========== -->
+        <section id="reports" class="view">
+            <h1>Reportes</h1>
+            <p>Próximamente…</p>
+        </section>
+
+    </main>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
